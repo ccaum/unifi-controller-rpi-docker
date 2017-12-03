@@ -8,7 +8,7 @@ TimeoutStartSec=0
 Restart=always
 ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm %n
-ExecStart=/usr/bin/docker docker run --network host -P -v /var/run/unifi/data:/usr/lib/unifi/data -v /var/run/unifi/logs:/usr/lib/unifi/logs --privileged
+ExecStart=/usr/bin/docker run --network host -P -v /var/run/unifi/data:/usr/lib/unifi/data -v /var/run/unifi/logs:/usr/lib/unifi/logs --privileged ccaum/unifi:latest
 
 [Install]
 WantedBy=multi-user.target
