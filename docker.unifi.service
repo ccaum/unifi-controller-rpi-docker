@@ -1,0 +1,14 @@
+[Unit]
+Description=UniFi Controller
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStartPre=-/usr/bin/docker stop %n
+ExecStartPre=-/usr/bin/docker rm %n
+ExecStart=/usr/bin/docker docker run --network host -P -v /var/run/unifi/data:/usr/lib/unifi/data -v /var/run/unifi/logs:/usr/lib/unifi/logs --privileged
+
+[Install]
+WantedBy=multi-user.target
